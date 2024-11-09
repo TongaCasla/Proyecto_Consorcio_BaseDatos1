@@ -101,26 +101,10 @@ Create table gasto	(
                          idlocalidad int,
                          idconsorcio int, 
 					     periodo int,
-					     fechapago datetime unique,					     
+					     fechapago datetime,					     
 						 idtipogasto int,
 						 importe decimal (8,2),	
 					     Constraint PK_gasto PRIMARY KEY (idgasto),
 						 Constraint FK_gasto_consorcio FOREIGN KEY (idprovincia,idlocalidad,idconsorcio)  REFERENCES consorcio(idprovincia,idlocalidad,idconsorcio),
 						 Constraint FK_gasto_tipo FOREIGN KEY (idtipogasto)  REFERENCES tipogasto(idtipogasto)					     					     						 					     					     
 							)
-go
-
-CREATE TABLE inmueble(
-	 idprovincia INT NOt NULL,
-	 idlocalidad INT NOT NULL,
-	 idconsorcio INT NOT NULL,
-	 sup DECIMAL(6,2),
-	 nro_pisos INT,
-	 cant_dpto INT,
-	 espacio_comun INT NOT NULL
- );
-
-ALTER TABLE inmueble
-	ADD CONSTRAINT PK_inmueble PRIMARY KEY (idprovincia, idlocalidad, idconsorcio);
-ALTER TABLE inmueble
-	ADD CONSTRAINT FK_inmueble_consorcio FOREIGN KEY(idprovincia, idlocalidad, idconsorcio)REFERENCES consorcio(idprovincia, idlocalidad, idconsorcio);

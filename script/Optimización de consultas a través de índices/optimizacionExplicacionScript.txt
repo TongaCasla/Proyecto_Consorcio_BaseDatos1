@@ -1,0 +1,47 @@
+**Explicación General del Script SQL** 
+
+1-Inserción de Datos:
+
+ Se utilizó un bucle WHILE para insertar un millón de registros en la tabla gasto. Se generaron fechas de pago aleatorias y valores aleatorios para el importe.
+
+ Cada 10,000 registros insertados, se imprime un mensaje indicando la cantidad de registros insertados hasta el momento.
+
+2-Creación de una Copia de la Tabla sin Índices:
+
+ Se creó una copia de la tabla gasto llamada gasto_sin_indices para comparar el rendimiento de consultas con y sin índices.
+
+ Se verificó que la nueva tabla gasto_sin_indices no tenga índices usando sp_helpindex.
+
+3-Consultas Iniciales sin Índices:
+
+Se ejecutaron consultas en ambas tablas (gasto y gasto_sin_indices) para comparar los tiempos de ejecución sin índices.
+
+Se utilizaron las instrucciones SET STATISTICS TIME ON y SET STATISTICS IO ON para habilitar las estadísticas de tiempo y E/S.
+
+4-Verificación de Índices Existentes:
+
+ Se verificaron los índices en la tabla gasto_sin_indices antes de crear nuevos índices.
+
+ 5-Creación de Índice No Agrupado:
+
+-Se creó un índice no agrupado en la columna fechapago de la tabla gasto_sin_indices.
+
+6-Comparación de Consultas con Índice No Agrupado:
+
+Se ejecutaron consultas en ambas tablas (gasto y gasto_sin_indices) para comparar los tiempos de ejecución con el índice no agrupado.
+
+7-Eliminación del Índice No Agrupado:
+
+Se eliminó el índice no agrupado en la tabla gasto_sin_indices.
+
+Creación de Índice Agrupado:
+
+8-Se creó un índice agrupado en la columna fechapago de la tabla gasto_sin_indices.
+
+9-Comparación de Consultas con Índice Agrupado:
+
+10-Se ejecutaron consultas en ambas tablas (gasto y gasto_sin_indices) para comparar los tiempos de ejecución con el índice agrupado.
+
+Verificación Final de Índices:
+
+Se verificaron los índices en la tabla gasto_sin_indices para asegurarse de que se crearon correctamente.
